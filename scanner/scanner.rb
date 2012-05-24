@@ -1,17 +1,17 @@
 class Token
-  EOF = 0
-  ID = 1
-  INT = 2
-  LPAREN = 3
-  RPAREN = 4
-  LBR = 5
-  RBR = 6
-  NEQ = 7
-  NOT = 8
-  EQ = 9
-  ASSIGN = 10
-  KEYWORD = 11
-  SCOLON = 12
+  EOF = :eof
+  ID = :id
+  INT = :int
+  LPAREN = :lparen
+  RPAREN = :rparen
+  LBR = :lbr
+  RBR = :rbr
+  NEQ = :neq
+  NOT = :not
+  EQ = :eq
+  ASSIGN = :assign
+  KEYWORD = :keyword
+  SCOLON = :scolon
 
   attr_reader :type
   attr_reader :value
@@ -113,9 +113,11 @@ class Scanner
   end
 end
 
-scanner = Scanner.new('test.c')
-token = scanner.get_token
-while token.type != Token::EOF
-  p token
+if __FILE__ == $0
+  scanner = Scanner.new('test.c')
   token = scanner.get_token
+  while token.type != Token::EOF
+    p token
+    token = scanner.get_token
+  end
 end
