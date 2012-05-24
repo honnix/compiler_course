@@ -82,6 +82,7 @@ class Scanner
       @next = @file.readchar
       while @next =~ /\d/
         number += @next
+        @next = @file.readchar
       end
 
       Token.new(Token::INT, number.to_i)
