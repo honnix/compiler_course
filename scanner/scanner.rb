@@ -6,6 +6,10 @@ class Token
   RPAREN = :rparen
   LBR = :lbr
   RBR = :rbr
+  PLUS = :plus
+  SUB = :sub
+  MUL = :mul
+  DIV = :div
   NEQ = :neq
   NOT = :not
   EQ = :eq
@@ -60,6 +64,18 @@ class Scanner
     when '}'
       @next = @file.readchar
       Token.new(Token::RBR)
+    when '+'
+      @next = @file.readchar
+      Token.new(Token::PLUS)
+    when '-'
+      @next = @file.readchar
+      Token.new(Token::SUB)      
+    when '*'
+      @next = @file.readchar
+      Token.new(Token::MUL)
+    when '/'
+      @next = @file.readchar
+      Token.new(Token::DIV)
     when /\d/
       number = @next
 

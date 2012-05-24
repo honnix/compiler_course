@@ -5,5 +5,7 @@ int main() {
         i = 2;
     }
 
+    i = 1 + 2 * (3 - 4) / 2;
+
     return i;
 }
