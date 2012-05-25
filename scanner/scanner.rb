@@ -7,7 +7,7 @@ class Token
   LBR = :lbr
   RBR = :rbr
   PLUS = :plus
-  SUB = :sub
+  MINUS = :minus
   MUL = :mul
   DIV = :div
   NEQ = :neq
@@ -69,7 +69,7 @@ class Scanner
       Token.new(Token::PLUS)
     when '-'
       @next = @file.readchar
-      Token.new(Token::SUB)      
+      Token.new(Token::MINUS)      
     when '*'
       @next = @file.readchar
       Token.new(Token::MUL)
