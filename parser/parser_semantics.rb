@@ -70,11 +70,11 @@ class ParserSemantics
         @token = @scanner.get_token
       else
         puts "')' expected"
-        nil
+        value = nil
       end
     else
       puts "ID, INT or '(' expected"
-      nil
+      value = nil
     end
 
     value
@@ -82,6 +82,6 @@ class ParserSemantics
 end
 
 if __FILE__ == $0
-  parser = Parser.new('test.a')
+  parser = ParserSemantics.new('test.a')
   puts parser.parse
 end
