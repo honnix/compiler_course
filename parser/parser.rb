@@ -37,6 +37,11 @@ class Parser
   end
 
   def factor
+    while @token.type != Token::ID and @token.type != Token::INT and @token.type != Token::LPAREN
+      @token = @scanner.get_token
+      puts "ID, INT or LPAREN is required"
+    end
+
     if @token.type == Token::ID or @token.type == Token::INT
       @token = @scanner.get_token
     elsif @token.type == Token::LPAREN
