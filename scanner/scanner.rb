@@ -10,12 +10,14 @@ class Token
   MINUS = :minus
   MUL = :mul
   DIV = :div
+  LT = :lt
   NEQ = :neq
   NOT = :not
   EQ = :eq
   ASSIGN = :assign
   KEYWORD = :keyword
   SCOLON = :scolon
+  COMMA = :comma
 
   attr_reader :type
   attr_reader :value
@@ -28,7 +30,8 @@ end
 
 class Scanner
   def initialize(file)
-    @file = File.open(file, 'r')
+    @file = STDIN
+    @file = File.open(file, 'r') if file != STDIN
     @next = @file.readchar
   end
 
@@ -52,6 +55,9 @@ class Scanner
     when ';'
       @next = @file.readchar
       Token.new(Token::SCOLON)
+    when ','
+      @next = @file.readchar
+      Token.new(Token::COMMA)
     when '('
       @next = @file.readchar
       Token.new(Token::LPAREN)
@@ -76,6 +82,9 @@ class Scanner
     when '/'
       @next = @file.readchar
       Token.new(Token::DIV)
+    when '<'
+      @next = @file.readchar
+      Token.new(Token::LT)
     when /\d/
       number = @next
 
